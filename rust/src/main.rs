@@ -29,7 +29,7 @@ struct JsonResponse {
     cod: u8,
     name: String,
     main: Main,
-    wind: Wind
+    wind: Wind,
 }
 
 async fn function_handler(event: LambdaEvent<Request>) -> Result<Response, Error> {
@@ -38,12 +38,15 @@ async fn function_handler(event: LambdaEvent<Request>) -> Result<Response, Error
     let url = format!("https://api.openweathermap.org/data/2.5/weather?q={point}&units=metric&appid={appid}");
 
     let res = reqwest::get(&url).await?;
-    //let body = res.text().await?;
     let body = res.json::<JsonResponse>().await?;
 
     let resp = Response {
         req_id: event.context.request_id,
-        msg: format!("statusCode: {}, 都市: {}, 最高気温: {}, 最低気温: {}, 風速: {}", 
+        msg: format!("statusCode: {}, 
+                     都市: {}, 
+                     最高気温: {}, 
+                     最低気温: {}, 
+                     風速: {}", 
           body.cod,
           body.name,
           body.main.temp_max,
