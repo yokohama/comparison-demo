@@ -1,5 +1,4 @@
 PROFILE = yokohama
-
 FUNK_NAME = node
 
 CITY = $(shell cat .env | grep CITY | awk -F'=' '{print $$2}')

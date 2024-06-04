@@ -1,4 +1,9 @@
-import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
+import { 
+  Context, 
+  APIGatewayProxyResult, 
+  APIGatewayEvent 
+} from 'aws-lambda';
+
 import fetch from 'node-fetch';
 
 import * as dotenv from 'dotenv';
@@ -20,8 +25,8 @@ interface WeatherResponse {
 }
 
 export const handler = async (event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> => {
-  console.log(`Event: ${JSON.stringify(event, null, 2)}`);
-  console.log(`Context: ${JSON.stringify(context, null, 2)}`);
+  // console.log(`Event: ${JSON.stringify(event, null, 2)}`);
+  // console.log(`Context: ${JSON.stringify(context, null, 2)}`);
 
   try {
     const response = await fetch(URL);
