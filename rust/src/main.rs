@@ -1,6 +1,12 @@
-use lambda_runtime::{run, service_fn, tracing, Error, LambdaEvent};
-use std::env;
+use lambda_runtime::{
+    run, 
+    service_fn, 
+    tracing, 
+    Error, 
+    LambdaEvent
+};
 
+use std::env;
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize)]
